@@ -9,7 +9,7 @@ export const PASSWORD_FORMAT_TIP = "密码必须至少含8个字符, 最多32个
 export const SIGN_FORMAT_TIP = "个性签名最多包含30个字符"
 export const hashTool = require("bcryptjs")
 
-
+// 这是用户输入自己的邮箱和密码 向后端发送请求 准备登录
 export function tryLogin(_email, _password) {
     // TODO 完善request中的数据
     return axios.request({
@@ -84,7 +84,7 @@ export function trySendCheckCode(_email) {
     }).then(reply => {
         return reply.data
     }).catch(() => {
-        return {"isSuccess": false}
+        return {"isSuccess": false,"test": "估计是超时"}
     })
 }
 

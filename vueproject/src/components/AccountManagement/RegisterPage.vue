@@ -3,15 +3,15 @@
         <v-card>
             <v-card-title class="headline">注册</v-card-title>
                 <v-card-text>
-                        <v-text-field v-model="username" label="昵称" style="width: 100%"></v-text-field>
-                        <v-text-field v-model="password1" label="密码" type="password" style="width: 100%"></v-text-field>
-                        <v-text-field v-model="password2" label="确认密码" type="password" style="width: 100%"></v-text-field>
-                        <v-text-field v-model="email" label="邮箱" style="width: 100%"></v-text-field>
-                        <div style="display: flex;">
-                            <v-text-field v-model="checkCode" label="验证码" style="width: 60%; margin-right: 16px;"></v-text-field>
-                            <v-btn color="primary" @click.prevent="sendCheckCode" v-bind="props" style="height: 56px;">发送验证码</v-btn> <br/>
-                        </div>
-                        <v-btn color="#42a300" block type="submit" @click.prevent="register" v-bind="props">注册</v-btn>
+                    <v-text-field v-model="username" label="昵称" style="width: 100%"></v-text-field>
+                    <v-text-field v-model="password1" label="密码" type="password" style="width: 100%"></v-text-field>
+                    <v-text-field v-model="password2" label="确认密码" type="password" style="width: 100%"></v-text-field>
+                    <v-text-field v-model="email" label="邮箱" style="width: 100%"></v-text-field>
+                    <div style="display: flex;">
+                        <v-text-field v-model="checkCode" label="验证码" style="width: 60%; margin-right: 16px;"></v-text-field>
+                        <v-btn color="primary" @click.prevent="sendCheckCode" v-bind="props" style="height: 56px;">发送验证码</v-btn> <br/>
+                    </div>
+                    <v-btn color="#42a300" block type="submit" @click.prevent="register" v-bind="props">注册</v-btn>
                 </v-card-text>
         </v-card>
     </v-container>
@@ -45,6 +45,7 @@ export default {
                 showTip("请保证邮箱符合北航邮箱格式", false)
             } else {
                 trySendCheckCode(this.email).then((res) => {
+                    console.log(res,'sendCheckCode')
                     if (res.isSuccess) {
                         showTip("发送成功", true)     
                     } else {
