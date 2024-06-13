@@ -16,7 +16,7 @@ export default {
     const isLogin = ref(store.isAuthentic);
     const user_name = ref(store.nickname);
     const avatar = ref(store.headImage);
-    const showDialog = ref(false)
+    const showDialog = ref(true)
 
     const searchContent = ref("")
     const unreadMessageNum = ref('...')
@@ -162,11 +162,8 @@ export default {
   </v-dialog>
   <v-app-bar :elevation="1"
              v-if="!display.smAndDown.value">
-    <!--    <template v-slot:prepend>-->
-    <!--      <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
-    <!--    </template>-->
     <v-app-bar-title>伴航</v-app-bar-title>
-    <v-col col="4">
+    <v-col col="1">
       <v-text-field
           density="compact"
           label="搜索"
@@ -221,7 +218,6 @@ export default {
           <v-img :src=" this.avatar"/>
         </v-avatar>
         {{ user_name }}
-        <!-- {{ store.nickname }} -->
       </v-col>
       <v-col v-else>
         <v-btn elevation="2" color="blue-darken-2" variant="flat" class="text-none" @click="gotoLoginOrPersonalIndex()">
@@ -236,7 +232,7 @@ export default {
     <v-avatar color="surface-variant" style="margin-left: 15px" size="32" @click="gotoLoginOrPersonalIndex()">
       <v-img :src="this.avatar"/>
     </v-avatar>
-    <v-col cols="7">
+    <v-col cols="1">
       <v-text-field
           density="compact"
           class="w-80"

@@ -521,6 +521,7 @@ export default {
       <div class="left-buttons">
         <!-- 点赞 -->
         <div>
+          hhhhhh
           <v-btn :icon="'mdi-chevron-up'"
                  color="light-blue-darken-1"
                  @click="goTop"

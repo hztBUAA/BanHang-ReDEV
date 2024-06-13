@@ -16,7 +16,7 @@
     </v-btn>
   </v-btn-toggle>
 
-  <v-btn-toggle v-if="false" v-model="nowSortMethod" mandatory shaped>
+  <!-- <v-btn-toggle v-if="false"  v-model="nowSortMethod" mandatory shaped>
     <v-btn value="byRelation" @click="reloadBySortMethod('byRelation')">
       <v-icon color="blue">mdi-link</v-icon>
       相关度
@@ -31,7 +31,7 @@
       <v-icon color="green">mdi-clock</v-icon>
       时间
     </v-btn>
-  </v-btn-toggle>
+  </v-btn-toggle> -->
 
   <v-divider></v-divider>
   <div v-if="this.nowSearchObj==='ques'">

@@ -6,8 +6,10 @@ import UserAvatar from "@/components/HelpCenter/UserAvatar.vue";
 export default {
   name: "PlainQuesCard",
   components: {UserAvatar},
+  // 这里的question 类似一个model   具有字段
   props: ["question", "tags"],
   setup(props) {
+    // 理解成就是为了显示前面摘要部分
     const truncate = (content) => {
       const strippedContent = content.replace(/<[^>]*>/g, "");
       if (strippedContent.length > 10) {
@@ -18,6 +20,7 @@ export default {
 
     const disTags = ref([])
 
+    // 对于单个ques的tag打上标记
     const init = () => {
       for (let i = 0; i < props.question.tagIdList.length; i++) {
         for (let j = 0; j < props.tags.length; j++) {
@@ -27,9 +30,9 @@ export default {
         }
       }
     }
-
     init()
 
+    // 用于判断 点击了外面？
     const menuClick = ref(false);
 
     function handleClickOutside(event) {
@@ -46,6 +49,7 @@ export default {
       document.removeEventListener("click", handleClickOutside);
     });
 
+    // goto 函数的作用是导航到一个新的 URL，然后刷新页面（go （0））。
     const goto = () => {
       router.push("/QuesInfo/" + props.question.quesId + "/0").then(
           () => {
@@ -54,6 +58,7 @@ export default {
       )
     }
 
+    // 将日期整理成特定输出形式
     const formatDate = (time) => {
       let date = new Date(Date.parse(time))
       let year = date.getFullYear();
@@ -81,10 +86,12 @@ export default {
         @click="goto()"
     >
       <v-row>
+        <!-- 左侧的头像 -->
         <v-col cols="1" style="min-width: 50px">
           <UserAvatar :userId="question.userId" style="padding-left: 8px"></UserAvatar>
         </v-col>
-        <v-col cols="5" style="text-align: left;" @click="goto">
+        <!-- 正文内容  压缩过的 -->
+        <v-col cols="7" style="text-align: left;" @click="goto">
           <div style="margin-top: 10px;">
             {{ truncate(question.quesContent.content) }}
           </div>
@@ -92,13 +99,14 @@ export default {
             {{ question.userName }} 发表于 {{ formatDate(question.quesTime) }}
           </div>
         </v-col>
+        <!-- 点赞 评论 -->
         <v-col cols="4" style="text-align: right;margin-top: 3px">
           <v-btn :prepend-icon="question.ifUserLike === 1 ?
                   'mdi-thumb-up-outline' : 'mdi-thumb-up'" variant="text" size="small"
                  color="blue-grey-lighten-2">
             {{ question.likeSum }}
           </v-btn>
-          <v-btn variant="text" prepend-icon="mdi-message-text" size="small" color="blue-grey-lighten-2">
+          <v-btn variant="text " prepend-icon="mdi-message-text" size="small" color="blue-grey-lighten-2">
             {{ question.ansSum }}
           </v-btn>
         </v-col>
