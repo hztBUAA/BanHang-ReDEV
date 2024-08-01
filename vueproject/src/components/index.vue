@@ -267,9 +267,16 @@ export default {
       </v-btn>
     </template>
   </v-app-bar>
+  <iframe
+ src="http://localhost/chatbot/KPemLPpi4xhf9aSa"
+ style="width: 100%; height: 100%; min-height: 700px"
+ frameborder="0"
+ allow="microphone">
+</iframe>
   <div :class="{ 'pc-router': !display.smAndDown.value, 'pe-router': display.smAndDown.value }">
     <router-view></router-view>
   </div>
+
   <v-bottom-navigation
       color="primary"
       active
@@ -307,5 +314,9 @@ export default {
 .pe-router {
   margin-top: 48px;
   height: calc(100% - 104px)
+}
+
+iframe {
+  z-index: 2; /* Higher z-index */
 }
 </style>
