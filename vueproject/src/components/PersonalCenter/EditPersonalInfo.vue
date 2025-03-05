@@ -1,4 +1,4 @@
-<template>
+<template>isApp
     <v-container>
         <v-dialog v-model="showDialog" max-width="400px">
             <v-card>
@@ -31,7 +31,7 @@
         </v-dialog>
 
 
-        <v-card> 
+    <v-card> 
         <v-toolbar density="compact" style="background-color:aliceblue;">
             <v-btn icon @click="clickGoBack">
                 <v-icon color="grey">mdi-arrow-left</v-icon>
